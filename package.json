@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^12.1.2",
     "next": "12.1.2",
     "react": "18.0.0",
     "react-dom": "18.0.0"
   },
   "devDependencies": {
-    "eslint": "8.12.0",
-    "eslint-config-next": "12.1.2"
+    "eslint": "^7.32.0",
+    "eslint-config-next": "12.1.2",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react-hooks": "^4.4.0"
   }
 }
