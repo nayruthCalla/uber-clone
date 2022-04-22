@@ -61,13 +61,13 @@ const Header = tw.header`
 flex flex-row justify-between items-center
 `;
 const UberLogo = tw.img`
-h-28
+h-24
 `;
 const UserProfile = tw.div`
-flex items-center
+flex items-center gap-2.5
 `;
 const Name = tw.p`
-mr-4 w-20 text-sm
+text-sm
 `;
 const Photo = tw.img`
 h-12 w-12 rounded-full border border-gray-200 p-px

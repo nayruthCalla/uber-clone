@@ -1,21 +1,49 @@
+import { useState, useEffect } from "react";
 import tw from "tailwind-styled-components";
+import { carList } from "../data/carList";
 
-const UberOption = ({ imgUrl, service, time, price }) => {
+const UberOption = ({ pickupCoordinates, dropoffCoordinates }) => {
+  const [rideDuration, setRideDuration] = useState();
+
+  useEffect(() => {
+    rideDuration = fetch(
+      `https://api.mapbox.com/directions/v5/mapbox/driving/${pickupCoordinates[0]},${pickupCoordinates[1]};${dropoffCoordinates[0]},${dropoffCoordinates[1]}?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setRideDuration(data.routes[0].duration / 100);
+      });
+  }, [pickupCoordinates, dropoffCoordinates]);
+
+  // console.log(rideDuration);
+
   return (
-    <Wrapper>
-      <ContainerItems>
-        <IconCar src={imgUrl} alt="iconCar" />
-        <ContainerText>
-          <Text>{service}</Text>
-          <ArrivalTimeText>{time}</ArrivalTimeText>
-        </ContainerText>
-      </ContainerItems>
-      <Text>{price}</Text>
-    </Wrapper>
+    <AcctionOptions>
+      <Title>Choose a ride, or swipe up for more</Title>
+      {carList.map(({ imgUrl, service, multiplier }, index) => (
+        <Wrapper key={index}>
+          <ContainerItems>
+            <IconCar src={imgUrl} alt="iconCar" />
+            <ContainerText>
+              <Text>{service}</Text>
+              <ArrivalTimeText>5 min away</ArrivalTimeText>
+            </ContainerText>
+          </ContainerItems>
+          <Text>{"$" + (rideDuration * multiplier).toFixed(2)}</Text>
+        </Wrapper>
+      ))}
+    </AcctionOptions>
   );
 };
 
 export default UberOption;
+
+const AcctionOptions = tw.div`
+flex-1 overflow-y-scroll
+`;
+const Title = tw.div`
+text-gray-500 text-center text-xs py-2 border-b
+`;
 
 const Wrapper = tw.article`
 flex justify-between items-center p-4

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import tw from "tailwind-styled-components";
 import Map from "../components/Map";
 import UberOption from "../components/UberOption";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Confirm = () => {
   const router = useRouter();
   const { pickup, dropoff } = router.query;
 
-  const [pickupCoordinates, setPickupCoordinates] = useState();
-  const [dropoffCoordinates, setDropoffCoordinates] = useState();
+  const [pickupCoordinates, setPickupCoordinates] = useState([0, 0]);
+  const [dropoffCoordinates, setDropoffCoordinates] = useState([0, 0]);
 
   const getPickupCoordinates = (pickup) => {
     // const pickup = "Santa Monica";
@@ -50,19 +52,19 @@ const Confirm = () => {
 
   return (
     <Wrapper>
+      <Link href="/Search">
+        <BackButton>
+          <FaArrowLeft />
+        </BackButton>
+      </Link>
       <Map
         pickupCoordinates={pickupCoordinates}
         dropoffCoordinates={dropoffCoordinates}
       />
-      <AcctionOptions>
-        <Title>Choose a ride, or swipe up for more</Title>
-        <UberOption
-          imgUrl="https://i.ibb.co/cyvcpfF/uberx.png"
-          service="UberX"
-          time="5 min away"
-          price="$20.20"
-        />
-      </AcctionOptions>
+      <UberOption
+        pickupCoordinates={pickupCoordinates}
+        dropoffCoordinates={dropoffCoordinates}
+      />
       <ConfirmbuttonContainer>Confirm UberX</ConfirmbuttonContainer>
     </Wrapper>
   );
@@ -73,12 +75,12 @@ export default Confirm;
 const Wrapper = tw.div`
 flex flex-col h-screen
 `;
-const AcctionOptions = tw.div`
-flex-1
-`;
+
 const ConfirmbuttonContainer = tw.div`
 bg-black text-white my-4 mx-4 py-4 text-center text-xl
 `;
-const Title = tw.div`
-text-gray-500 text-center text-xs
+const ButtonContainer = tw.div`
+borde-t-2 `;
+const BackButton = tw.button`
+rounded-full absolute top-4 left-4 z-10 bg-white shadow-md cursor-pointer text-2xl  p-1 
 `;
