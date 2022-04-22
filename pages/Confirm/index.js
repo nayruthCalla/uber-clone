@@ -18,8 +18,7 @@ const Confirm = () => {
     fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
         new URLSearchParams({
-          access_token:
-            "pk.eyJ1IjoibmF5cnV0aGNhbGxhIiwiYSI6ImNsMWUxdWl3NTAzY3czbHFrdnd5ZDkwNzAifQ.FiV_LMWHFnuvGyqjxXDQdw",
+          access_token: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
           limit: 1,
         })
     )
@@ -34,8 +33,7 @@ const Confirm = () => {
     fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` +
         new URLSearchParams({
-          access_token:
-            "pk.eyJ1IjoibmF5cnV0aGNhbGxhIiwiYSI6ImNsMWUxdWl3NTAzY3czbHFrdnd5ZDkwNzAifQ.FiV_LMWHFnuvGyqjxXDQdw",
+          access_token: process.env.NEXT_PUBLIC_MAPBOX_TOKEN,
           limit: 1,
         })
     )

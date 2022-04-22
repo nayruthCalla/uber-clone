@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import tw from "tailwind-styled-components";
 import mapboxgl from "mapbox-gl";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibmF5cnV0aGNhbGxhIiwiYSI6ImNsMWUxdWl3NTAzY3czbHFrdnd5ZDkwNzAifQ.FiV_LMWHFnuvGyqjxXDQdw";
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 const Map = ({ pickupCoordinates, dropoffCoordinates }) => {
   useEffect(() => {
