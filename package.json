@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^12.1.2",
+    "firebase": "^9.6.11",
     "mapbox-gl": "^2.7.1",
     "next": "12.1.2",
     "react": "18.0.0",

@@ -53,7 +53,7 @@ flex gap-2.5 justify-center items-center
 `;
 const ContainerText = tw.div``;
 const IconCar = tw.img`
-w-16 h-16
+w-16 h-16 object-contain
 `;
 const ArrivalTimeText = tw.p`
 text-xs text-sky-600

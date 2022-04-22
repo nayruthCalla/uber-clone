@@ -1,8 +1,29 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import tw from "tailwind-styled-components";
 import Map from "./components/Map";
+import { auth } from "../firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const [user, setUser] = useState();
+  const router = useRouter();
+
+  useEffect(() => {
+    return onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser({
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+        });
+      } else {
+        setUser(null);
+        router.push("/Login");
+      }
+    });
+  }, []);
+
   return (
     <Wrapper>
       <Map />
@@ -13,10 +34,11 @@ export default function Home() {
             alt="logo"
           />
           <UserProfile>
-            <Name>Nayruth Calla</Name>
+            <Name>{user && user.displayName}</Name>
             <Photo
-              src="https://res.cloudinary.com/drcn7ijzl/image/upload/v1648680709/Nayfoto-min_ym4ezh.jpg"
+              src={user && user.photoURL}
               alt="photo-user"
+              onClick={() => signOut(auth)}
             />
           </UserProfile>
         </Header>
@@ -70,7 +92,7 @@ const Name = tw.p`
 text-sm
 `;
 const Photo = tw.img`
-h-12 w-12 rounded-full border border-gray-200 p-px
+h-12 w-12 rounded-full border border-gray-200 p-px cursor-pointer
 `;
 const ActionButtons = tw.div`
 flex
@@ -79,7 +101,7 @@ const ActionButton = tw.div`
 flex bg-gray-200 text-center flex-1 m-1 h-32 items-center justify-center flex-col  rounded-lg transform hover:scale-105 trasition text-xl
 `;
 const ActionButtonImage = tw.img`
-h-3/5
+h-3/5 object-contain
 `;
 const SearchButton = tw.button`
 h-20 w-full bg-gray-200 text-2xl p-4 flex items-center mt-8
