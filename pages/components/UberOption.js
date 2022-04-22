@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import tw from "tailwind-styled-components";
 import { carList } from "../data/carList";

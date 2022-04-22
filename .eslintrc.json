@@ -1,4 +1,33 @@
 {
-  "extends": ["next/core-web-vitals","next", "prettier"],
-  "parser": "babel-eslint"
+  "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+  },
+  "extends": [
+      "plugin:react/recommended",
+      "plugin:jsx-a11y/recommended",
+      "airbnb",
+      "prettier"
+  ],
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+  },
+  "plugins": [
+      "react",
+      "prettier"
+  ],
+  "rules": {
+      "prettier/prettier":[
+          "error", {
+          "endOfLine": "auto"
+      }],
+      "react/jsx-filename-extension" : [1, {"extensions" : [".js", ".jsx"]}],
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off"
+  }
 }
