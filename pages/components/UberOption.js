@@ -11,7 +11,7 @@ const UberOption = ({ pickupCoordinates, dropoffCoordinates }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setRideDuration(data.routes[0].duration / 100);
+        setRideDuration(data.routes[0]?.duration / 100);
       });
   }, [pickupCoordinates, dropoffCoordinates]);
 
@@ -46,7 +46,7 @@ text-gray-500 text-center text-xs py-2 border-b
 `;
 
 const Wrapper = tw.article`
-flex justify-between items-center p-4
+flex justify-between items-center p-4 hover:bg-gray-200
 `;
 const ContainerItems = tw.div`
 flex gap-2.5 justify-center items-center
