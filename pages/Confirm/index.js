@@ -1,11 +1,11 @@
-/* eslint-disable @next/next/link-passhref */
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import tw from "tailwind-styled-components";
-import Map from "../components/Map";
-import UberOption from "../components/UberOption";
-import { FaArrowLeft } from "react-icons/fa";
+// /* eslint-disable @next/next/link-passhref */
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import tw from 'tailwind-styled-components';
+import Map from '../components/Map';
+import UberOption from '../components/UberOption';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const Confirm = () => {
   const router = useRouter();

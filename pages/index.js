@@ -1,12 +1,10 @@
-/* eslint-disable @next/next/link-passhref */
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import tw from "tailwind-styled-components";
-import Map from "./components/Map";
-import { auth } from "../firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "next/router";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import tw from 'tailwind-styled-components';
+import Map from './components/Map';
+import { auth } from '../firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const [user, setUser] = useState();
@@ -21,7 +19,7 @@ export default function Home() {
         });
       } else {
         setUser(null);
-        router.push("/Login");
+        router.push('/Login');
       }
     });
   }, []);

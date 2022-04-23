@@ -1,13 +1,13 @@
-/* eslint-disable @next/next/link-passhref */
-import { useState } from "react";
-import Link from "next/link";
-import tw from "tailwind-styled-components";
-import { FaArrowLeft, FaSquareFull, FaCircle } from "react-icons/fa";
-import { IconContext } from "react-icons";
+// /* eslint-disable @next/next/link-passhref */
+import { useState } from 'react';
+import Link from 'next/link';
+import tw from 'tailwind-styled-components';
+import { FaArrowLeft, FaSquareFull, FaCircle } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 const Search = () => {
-  const [pickup, setPickup] = useState("");
-  const [dropoff, setDropoff] = useState("");
+  const [pickup, setPickup] = useState('');
+  const [dropoff, setDropoff] = useState('');
 
   return (
     <Wrapper>
@@ -20,7 +20,7 @@ const Search = () => {
         <InputsContainer>
           <FromToIcons>
             <IconContext.Provider
-              value={{ color: "rgb(156 163 175 / var(--tw-bg-opacity))" }}
+              value={{ color: 'rgb(156 163 175 / var(--tw-bg-opacity))' }}
             >
               <FaCircle />
             </IconContext.Provider>
@@ -49,7 +49,7 @@ const Search = () => {
       <ConfirmButtonCont>
         <Link
           href={{
-            pathname: "./Confirm",
+            pathname: './Confirm',
             query: {
               pickup: pickup,
               dropoff: dropoff,
