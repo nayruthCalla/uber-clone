@@ -1,5 +1,5 @@
 {
-    "parser": "babel-eslint"
+    "parser": "@babel/eslint-parser "
     // "extends": ["next/core-web-vitals","next", "prettier"]
 //   "env": {
 //       "browser": true,
